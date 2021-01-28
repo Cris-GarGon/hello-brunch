@@ -1,7 +1,13 @@
 default:
-  image: node:lastest
+  image: node:latest
 
 build-job:
   stage: build
   script:
-    - echo "Helo, Gitlab"
+    - yarn
+    - yarn build
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploy"
