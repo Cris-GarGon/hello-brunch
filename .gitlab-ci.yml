@@ -1,0 +1,7 @@
+default:
+  image: node:lastest
+
+build-job:
+  stage: build
+  script:
+    - echo "Helo, Gitlab"
