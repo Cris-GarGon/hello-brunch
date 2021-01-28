@@ -7,6 +7,12 @@ build-job:
     - yarn
     - yarn build
 
+test-job:
+  stage: test
+  script:
+    - echo "Test"
+
+
 deploy-job:
   stage: deploy
   script:
