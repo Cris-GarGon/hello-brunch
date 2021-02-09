@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-	stage('security'){
+	stage('Security'){
 	   steps {
             sh 'trivy filesystem --format json --output trivy-fs.json .'
                 sh 'trivy image --format json --output trivy-image.json hello-brunch'
