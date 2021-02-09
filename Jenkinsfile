@@ -19,13 +19,15 @@ pipeline {
 
 	stage('security'){
 	   steps {
-                sh 'trivy image --format json --output trivy-results.json hello-brunch'
+            sh 'trivy filesystem --format json --output trivy-fs.json .'
+                sh 'trivy image --format json --output trivy-image.json hello-brunch'
             }
             post {
                 always {
                     recordIssues(
                         enabledForFailure: true,
-                        tool: trivy(pattern: 'trivy-results.json')
+                        aggregatingResults:true,
+                        tool: trivy(pattern: 'trivy-*.json')
                     )
                 }
             }
