@@ -19,7 +19,7 @@ pipeline {
 
 	stage('security'){
 	   steps {
-                sh 'trivy docker-compose --format json --output trivy-results.json'
+                sh 'trivy image --format json --output trivy-results.json hello-brunch'
             }
             post {
                 always {
