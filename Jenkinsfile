@@ -10,10 +10,12 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-        
-        stage('Deploy') {
+        stage('Publish'){
             steps {
-                sh 'docker-compose up -d'
+                withDockerRegistry(credentialsId: 'gitlab-registry', url: 'http://10.250.2.6:5050') {
+    sh 'docker tag hello-brunch:latest 10.250.2.6:5050/root/hello-brunch:latest'
+    sh 'docker push 10.250.2.6:5050/root/hello-brunch:latest'
+}
             }
         }
     }
