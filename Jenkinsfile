@@ -24,6 +24,14 @@ pipeline {
                 }
             }
         }
+        stage('Deploy'){
+            steps {
+                sshagent(credentials:['deploy-ssh']) {
+                    sh 'docker-compose pull'
+                    sh 'docker-compose up -d' 
+                }
+            }
+        }
     }
 }
 
