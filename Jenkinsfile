@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy'){
             steps {
                 sshagent(credentials:['deploy-ssh']) {
-                    ssh -t -o "StrictHostKeyChecking no" deploy@10.250.2.6 'docker-compose pull & docker-compose up -d'
+                    sh ¡ssh -t -o "StrictHostKeyChecking no" deploy@10.250.2.6 'docker-compose pull & docker-compose up -d''
 
                 }
             }
