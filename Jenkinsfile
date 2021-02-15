@@ -6,7 +6,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git url: 'http://10.250.2.6:8929/root/hello-brunch.git', branch: 'registry'
                 sh 'docker-compose build'
             }
         }
