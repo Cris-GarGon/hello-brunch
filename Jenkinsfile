@@ -18,8 +18,11 @@ pipeline {
                     //sh 'docker push 10.250.2.6:5050/root/hello-brunch:latest
                     sh 'docker push 10.250.2.6:5050/root/hello-brunch:BUILD-1.${BUILD_ID}'
                 }
-                sh 'git tag BUILD-1.${BUILD_ID}'
-                sh 'git push --tags'
+
+                sshagent(['gitlab_ssh']) {
+                    sh 'git tag BUILD-1.${BUILD_ID}'
+                    sh 'git push --tags'
+                }
             }
         }
     }
